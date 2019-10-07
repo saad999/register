@@ -29,8 +29,6 @@ public class LogActivity extends AppCompatActivity {
     // Declaration
     private static final String GET_USER = "https://go2gether.000webhostapp.com/api/get.php";
     private static final String LOG = "https://go2gether.000webhostapp.com/api/login.php";
-    private static final String LOG1 = "http://192.168.43.94/Andro/v1/index.php";
-    private static final String LOgg = "http://192.168.43.94/Andro/v1/gget.php";
     Button btn;
     EditText ed1, ed2;
     TextView txt1, txt2;
@@ -91,7 +89,7 @@ public class LogActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
             try {
-                URL url = new URL(LOG1 + "?e=" + ed1.getText().toString());
+                URL url = new URL(LOG + "?e=" + ed1.getText().toString());
                 URLConnection connection = url.openConnection();
                 InputStreamReader inputStream = new InputStreamReader(connection.getInputStream());
                 BufferedReader reader = new BufferedReader(inputStream);
@@ -100,7 +98,7 @@ public class LogActivity extends AppCompatActivity {
                     txt1 += ln;
                 }
 
-                URL ur = new URL(LOgg + "?e=" + ed1.getText().toString());
+                URL ur = new URL(GET_USER + "?e=" + ed1.getText().toString());
                 URLConnection conn = ur.openConnection();
                 InputStreamReader input = new InputStreamReader(conn.getInputStream());
                 BufferedReader read = new BufferedReader(input);
@@ -119,9 +117,8 @@ public class LogActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
-
             progressDialog.dismiss();
-            if (txt1.equals("not reg")) {
+            if (txt1.equals("not registered")) {
                 Toast.makeText(context, txt1, Toast.LENGTH_SHORT).show();
             } else if (!ed2.getText().toString().trim().equals(txt1)) {
                 Toast.makeText(context, "password not correct", Toast.LENGTH_SHORT).show();

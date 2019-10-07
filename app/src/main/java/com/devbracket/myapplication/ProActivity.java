@@ -27,11 +27,6 @@ import java.net.URLConnection;
 public class ProActivity extends AppCompatActivity {
 
     // Declaration
-    private static final String REG_USER = "https://go2gether.000webhostapp.com/api/go.php";
-    private static final String LOgg = "http://192.168.43.94/Andro/v1/cl.php";
-
-    Button btn;
-    EditText ed1, ed2, ed3;
     TextView txt1,txt2,txt3;
     JSONObject js;
     @Override

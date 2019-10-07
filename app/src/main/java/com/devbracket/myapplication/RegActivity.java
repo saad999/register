@@ -25,8 +25,6 @@ public class RegActivity extends AppCompatActivity {
 
     // Declaration
     private static final String REG_USER = "https://go2gether.000webhostapp.com/api/go.php";
-    private static final String LOgg = "http://192.168.43.94/Andro/v1/cl.php";
-
     Button btn;
     EditText ed1, ed2, ed3;
     TextView txt;
@@ -35,8 +33,6 @@ public class RegActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg);
-
-        Toast.makeText(RegActivity.this,Calendar.getInstance().get(Calendar.DAY_OF_YEAR)+"", Toast.LENGTH_SHORT).show();
 
         // Initializing
         btn = findViewById(R.id.reg_btn);
@@ -91,13 +87,14 @@ public class RegActivity extends AppCompatActivity {
             progressDialog = new ProgressDialog(context);
             progressDialog.setMessage("Registering...");
             progressDialog.show();
+            progressDialog.setCancelable(false);
             super.onPreExecute();
         }
 
         @Override
         protected String doInBackground(String... strings) {
             try {
-                URL url = new URL(LOgg
+                URL url = new URL(REG_USER
                         + "?u=" + ed1.getText().toString()
                         + "&p=" + ed2.getText().toString()
                         + "&e=" + ed3.getText().toString());
